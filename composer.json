@@ -1,0 +1,38 @@
+{
+    "name": "indykoning/laravel-module-create",
+    "description": "Easily create local modules for modular development",
+    "authors":
+    [
+        {
+            "name": "indy koning",
+            "email": "indy@justbetter.nl"
+        }
+    ],
+    "require":
+    {
+        "laravel/framework": "*"
+    },
+    "config":
+    {
+        "sort-packages": true
+    },
+    "extra":
+    {
+        "laravel":
+        {
+            "providers":
+            [
+                "IndyKoning\\ModuleCreate\\ModuleCreateServiceProvider"
+            ]
+        }
+    },
+    "autoload":
+    {
+        "psr-4":
+        {
+            "IndyKoning\\ModuleCreate\\": ""
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
