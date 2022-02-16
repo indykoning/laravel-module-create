@@ -1,28 +1,21 @@
 {
     "name": ":jsonVendor/:jsonPackage",
     "description": "",
-    "require":
-    {
+    "require": {
         "laravel/framework": "*"
     },
-    "config":
-    {
+    "config": {
         "sort-packages": true
     },
-    "extra":
-    {
-        "laravel":
-        {
-            "providers":
-            [
+    "extra": {
+        "laravel": {
+            "providers": [
                 ":vendor\\:package\\:packageServiceProvider"
             ]
         }
     },
-    "autoload":
-    {
-        "psr-4":
-        {
+    "autoload": {
+        "psr-4": {
             ":vendor\\:package\\": ""
         }
     },

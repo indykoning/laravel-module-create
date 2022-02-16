@@ -1,38 +1,46 @@
 {
-    "name": "indykoning/laravel-module-create",
+    "name": "indykoning/laravel-create-module",
     "description": "Easily create local modules for modular development",
-    "authors":
-    [
+    "keywords": ["framework", "laravel", "laravel zero", "console", "cli", "laravel module", "module"],
+    "type": "project",
+    "license": "MIT",
+    "authors": [
         {
             "name": "indy koning",
             "email": "indy@justbetter.nl"
         }
     ],
-    "require":
-    {
-        "laravel/framework": "*"
+    "require": {
+        "php": "^8.0",
+        "illuminate/translation": "^9.1",
+        "laravel-zero/framework": "^9.0",
+        "nunomaduro/termwind": "^1.3"
     },
-    "config":
-    {
-        "sort-packages": true
+    "require-dev": {
+        "mockery/mockery": "^1.4.4",
+        "pestphp/pest": "^1.21.1"
     },
-    "extra":
-    {
-        "laravel":
-        {
-            "providers":
-            [
-                "IndyKoning\\ModuleCreate\\ModuleCreateServiceProvider"
-            ]
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
         }
     },
-    "autoload":
-    {
-        "psr-4":
-        {
-            "IndyKoning\\ModuleCreate\\": ""
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "bin": ["./builds/create-module"]
 }
