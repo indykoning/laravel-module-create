@@ -6,13 +6,13 @@ This module adds a command to easily generate "modules" in Laravel and install t
 
 Simply install the package using composer
 
-`composer require indykoning/laravel-module-create --dev`
+`composer global require indykoning/laravel-module-create --dev`
 
 Since this module uses composer to install and autoload the created modules this module can be removed while still keeping created modules functional.
 
 ## Usage
 
-`php artisan make:module {vendor} {package} {--json-vendor=} {--json-package=} {--stub=}`
+`create-module make:module {vendor} {package} {--json-vendor=} {--json-package=} {--stub=}`
 
 if json-vendor and json-package are not defined, we will make assumptions based on the vendor and package name
 
