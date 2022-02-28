@@ -20,6 +20,18 @@ The possible values of stub are:
  - spatie (uses the [spatie skeleton](https://github.com/spatie/package-skeleton-laravel), may prove a somewhat unstable on old laravel installations but is much more fully featured)
  - default (the VERY basics of what you need for an install)
 
+## Configuration
+
+If you wish to change the folder that the module installs new modules to you can publish the config
+
+```
+php artisan vendor:publish --provider="IndyKoning\ModuleCreate\ModuleCreateServiceProvider" --tag="config"
+```
+
+and change the `module-folder`
+
+NOTE: `module-folder` is assumed to be relative from the laravel installation, so do not attempt to use an absolute path. Subfolders are fine though.
+
 ## Internals
 
 1. We very simply create the required folders for the vendor and package name

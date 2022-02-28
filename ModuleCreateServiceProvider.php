@@ -19,5 +19,11 @@ class ModuleCreateServiceProvider extends ServiceProvider
                 MakeModule::class,
             ]);
         }
+
+        $this->mergeConfigFrom(__DIR__.'/config/module-create.php', 'module-create');
+
+        $this->publishes([
+            __DIR__.'/config/module-create.php' => config_path('module-create.php'),
+        ], 'config');
     }
 }

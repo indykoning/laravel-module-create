@@ -28,7 +28,9 @@ class MakeModule extends Command
         $jsonVendor = $this->jsonVendor = $this->option('json-vendor') ?? Str::lower($this->vendor);
         $jsonPackage = $this->jsonPackage = $this->option('json-package') ?? Str::kebab($this->package);
 
-        $relPath = $this->relPath = __('Modules/:vendor/:package', @compact('vendor', 'package'));
+        $moduleFolder = config('module-create.module-folder', 'Modules');
+
+        $relPath = $this->relPath = __(':moduleFolder/:vendor/:package', @compact('vendor', 'package', 'moduleFolder'));
         $packagePath = $this->packagePath = base_path($this->relPath);
 
         $this->info(__('Creating directory at: :path', ['path' => $relPath]));
@@ -74,6 +76,7 @@ class MakeModule extends Command
      */
     public function runSpatieStub()
     {
+        $removeGit = $this->confirm('Remove .git folder from module?', true);
         $this->info(__('Cloning the spatie skeleton package into: :path', ['path' => $this->relPath]));
         Process::fromShellCommandline(__('cd :packagePath && git clone https://github.com/spatie/package-skeleton-laravel.git .', ['packagePath' => $this->packagePath]))
             ->setTty(true)
@@ -87,7 +90,9 @@ class MakeModule extends Command
         $this->warn(__('Vendor namespace: :vendor', ['vendor' => $this->vendor]));
         $this->warn(__('Package name :jsonPackage', ['jsonPackage' => $this->jsonPackage]));
         $this->warn(__('Class name :package', ['package' => $this->package]));
-
+        if ($removeGit) {
+            File::deleteDirectory($this->packagePath . DIRECTORY_SEPARATOR . '.git');
+        }
         Process::fromShellCommandline(__('cd :packagePath && php ./configure.php', ['packagePath' => $this->packagePath]))
             ->setTty(true)
             ->setTimeout(null)
